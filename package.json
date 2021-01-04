@@ -4,6 +4,8 @@
   "description": "Repo for A03.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "devstart": "nodemon --inspect ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,6 +15,10 @@
   "author": "Sirwan Rasoul",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-hbs": "^2.3.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
