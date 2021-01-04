@@ -17,7 +17,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-hbs": "^2.3.4",
-    "request": "^2.88.2"
+    "http": "0.0.1-security",
+    "request": "^2.88.2",
+    "socket.io": "^3.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
