@@ -22,7 +22,7 @@ io.on('connection', (socket)=>{
 app.engine('hbs', hbs.express4({
   defaultLayout: path.join(__dirname, 'views', 'layouts', 'default')
 }))
-
+app.use(express.json());
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
