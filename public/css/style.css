@@ -1,0 +1,40 @@
+body {
+    background-image: url(../img/backround.jpg);
+}
+
+#page-title{
+    font-size: clamp(1.2rem,calc(1rem + 3.5vw),4rem);
+    text-shadow: 0 2px 2px rgba(0,0,0,.5);
+    color: white;
+    margin: 0;
+    border-bottom: white 2px solid;
+}
+
+#page-title1{
+    font-size: 40px;
+    text-shadow: 0 2px 2px rgba(0,0,0,.5);
+    color: white;
+    margin: 0;
+    text-align: center;
+    
+}
+
+#issue-box{
+    border: solid white 2px;
+    width: 300px;
+    margin-top: 50px;
+    background: rgba(242, 215, 240, 0.3);
+    color: white;
+    text-shadow: 0 2px 2px rgba(0,0,0,.5);
+    padding-left: 10px;
+    float: left;
+    width: auto;
+    padding-right: 10px;
+    margin-right: 25px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.title{
+    border-bottom: white 2px solid;
+}

@@ -10,12 +10,31 @@ const index = (req, response) => {
       request.get(options1, async (err, res, html) => {
   
         if (!err && res.statusCode === 200) {
-            const viewData = {
-                name: html[0].author.name,
-                username: html[0].author.username 
+          let i = 0;
+          let viewData;
+          let array = [];
+          for(jsonData of html){
+            array.push (
+              viewData = {
+                name: html[i].author.name,
+                state: html[i].state,
+                description: html[i].description,
+                updated_at: html[i].updated_at,
+                short: html[i].references.short,
+                web_url: html[i].web_url,
+                title: html[i].title,
+                created_at: html[i].created_at
               }
+            )
+           
+            i++
+            
+          }
           
-              response.render('custom/home', { viewData})
+          console.log(array)
+           
+          
+              response.render('custom/home', { array})
         }
       })
   

@@ -1,4 +1,18 @@
-<div>
-    <p>{{viewData.name}}</p>
-    <p>{{viewData.username}}</p>
+<div id="page-title">
+    <p style="margin-bottom: 0px;">Welcome To Gitlab Issues Notifications</p>
 </div>
+<div id="page-title1">
+    <p>Current Issues</p>
+</div>
+{{#each array}}
+<div id="issue-box">
+    <p class="title">Issue {{short}}</p>
+    <p>State: {{state}}</p>
+    <p>Author: {{name}}</p>
+    <p>Link: {{web_url}}</p>
+    <p>Title: {{title}}</p>
+    <p>Description: {{description}}</p>
+    <p>Created at: {{created_at}}</p>
+    <p>Updated at: {{updated_at}}</p>
+</div>
+{{/each}}
