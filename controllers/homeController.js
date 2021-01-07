@@ -40,7 +40,7 @@ const index = (req, response) => {
   }
 
   const hookPost = (req, res) => {
-    if (req.headers['X-Gitlab-Token'] === process.env.SECRET) {
+    if (req.headers['x-gitlab-token'] === process.env.SECRET) {
       if (req.body.object_kind === 'issue') {
         viewData = {
           action: req.body.object_attributes.action,
