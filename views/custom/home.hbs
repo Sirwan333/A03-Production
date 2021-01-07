@@ -1,12 +1,18 @@
+
 <div id="page-title">
     <p style="margin-bottom: 0px;">Welcome To Gitlab Issues Notifications</p>
 </div>
 <div id="page-title1">
     <p>Current Issues</p>
 </div>
+<div class="cont">
+</div>
 {{#each array}}
 <div id="issue-box">
-    <p class="title">Issue {{short}}</p>
+    <div class="titleP">
+        <span class="title">Issue {{short}}</span>
+    </div>
+    
     <p>State: {{state}}</p>
     <p>Author: {{name}}</p>
     <p>Link: {{web_url}}</p>
@@ -14,5 +20,6 @@
     <p>Description: {{description}}</p>
     <p>Created at: {{created_at}}</p>
     <p>Updated at: {{updated_at}}</p>
+    <p>Nr of comments: {{user_notes_count}}</p>
 </div>
 {{/each}}

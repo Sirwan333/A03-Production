@@ -2,12 +2,18 @@ var express = require('express')
 var path = require('path')
 var hbs = require('express-hbs')
 var app = express()
-const socketIO = require('socket.io'); 
 const http = require('http') 
-let server = http.createServer(app) 
+var server = http.createServer(app) 
+var session = require('express-session')
 
 
-let io = socketIO(server) 
+var io = exports.io =require('socket.io')(server) 
+app.use(session({
+  resave: false, // don't save session if unmodified
+  saveUninitialized: false, // don't create session until something stored
+  secret: 'keyboard cat'
+}))
+
 io.on('connection', (socket)=>{
     console.log('User connected');
     socket.on('createMessage', (newMessage)=>{ 

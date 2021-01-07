@@ -35,6 +35,36 @@ body {
     margin-bottom: 10px;
 }
 
-.title{
+.titleP{
     border-bottom: white 2px solid;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.divCon{
+    color: white;
+    border: solid red 2px;
+    margin-top: 3px;
+    padding-right: 10px;
+    text-shadow: 0 2px 2px rgba(0,0,0,.5);
+    padding-left: 10px;
+}
+
+.noti{
+    color: red;
+    font-size: large;
+    margin-bottom: 0px;
+}
+
+.cont{
+    width: 250px; 
+}
+
+.comm{
+    float: right;
+    border: solid red 2px;
+    border-radius: 25px;
+    color: white;
+    padding: 2px;
+    font-size: small;
+    background-color: red;
 }

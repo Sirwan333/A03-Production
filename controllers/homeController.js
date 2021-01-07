@@ -1,4 +1,6 @@
 const request = require('request')
+const io = require('../app.js').io;
+
 
 
 const index = (req, response) => {
@@ -23,17 +25,14 @@ const index = (req, response) => {
                 short: html[i].references.short,
                 web_url: html[i].web_url,
                 title: html[i].title,
-                created_at: html[i].created_at
+                created_at: html[i].created_at,
+                user_notes_count: html[i].user_notes_count 
               }
             )
            
             i++
             
           }
-          
-          console.log(array)
-           
-          
               response.render('custom/home', { array})
         }
       })
@@ -41,16 +40,23 @@ const index = (req, response) => {
   }
 
   const hookPost = (req, res) => {
-    
-    const viewData = {
+    if (req.body.object_kind === 'issue') {
+      viewData = {
+        action: req.body.object_attributes.action,
         name: req.body.user.name,
-        username: req.body.object_kind 
+        title: req.body.object_attributes.title
       }
-      res.render('custom/test', { viewData})
-      console.log('done')
-  
+    } else {
+      viewData = {
+        action: 'new comment',
+        name: req.body.user.name,
+        title: req.body.issue.title,
+        text: req.body.object_attributes.description,
+        number: req.body.issue.iid
+      } 
+    }
+    io.emit('message', viewData)
   }
 
-  
   module.exports = { index, hookPost }
   
