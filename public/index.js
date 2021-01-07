@@ -1,22 +1,23 @@
-var socket=io() 
-  
-// connection with server 
-socket.on('connect', function(){ 
-  console.log('Connected to Server') 
-  
-}); 
-  
-// message listener from server 
-socket.on('message', function(message){ 
- displayNotification(message)
-}); 
-  
-// when disconnected from server 
-socket.on('disconnect', function(){ 
-  console.log('Disconnect from server') 
-}); 
+const socket = io()
+// connection with server
+socket.on('connect', function () {
+  console.log('Connected to Server')
+})
+// message listener from server
+socket.on('message', function (message) {
+  displayNotification(message)
+})
+// when disconnected from server
+socket.on('disconnect', function () {
+  console.log('Disconnect from server')
+})
 
-function displayNotification(message) {
+/**
+ * It displays the notifications.
+ *
+ * @param {string} message the data coming drom the server
+ */
+function displayNotification (message) {
   if (message.action === 'open') {
     const div = document.createElement('div')
     div.className = 'bothP'
@@ -53,7 +54,5 @@ function displayNotification(message) {
         el.append(pa)
       }
     })
-    
   }
-  
 }
