@@ -5,7 +5,7 @@ var app = express()
 const http = require('http') 
 var server = http.createServer(app) 
 var session = require('express-session')
-
+const PORT = process.env.PORT || 3000
 
 var io = exports.io =require('socket.io')(server) 
 app.use(session({
@@ -34,4 +34,4 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require('./routes/home'))
 app.set('views', path.join(__dirname, 'views'))
-server.listen(3000, () => { console.log('Server is running at http://localhost:3000') })
+server.listen(3000, () => { console.log(`Server is running at http://localhost:${server.address().port}`) })

@@ -1,12 +1,12 @@
 const request = require('request')
 const io = require('../app.js').io;
-
+var crypto = require('crypto');
 
 
 const index = (req, response) => {
     
     const options1 = {
-        url: 'https://gitlab.lnu.se/api/v4/projects/10737/issues?private_token=HDgNS-JxERFt58RBY9C-',
+        url: `https://gitlab.lnu.se/api/v4/projects/10737/issues?private_token=${process.env.TOKEN}`,
         json: true
       }
       request.get(options1, async (err, res, html) => {
@@ -40,22 +40,28 @@ const index = (req, response) => {
   }
 
   const hookPost = (req, res) => {
-    if (req.body.object_kind === 'issue') {
-      viewData = {
-        action: req.body.object_attributes.action,
-        name: req.body.user.name,
-        title: req.body.object_attributes.title
+    if (req.headers['X-Gitlab-Token'] === process.env.SECRET) {
+      if (req.body.object_kind === 'issue') {
+        viewData = {
+          action: req.body.object_attributes.action,
+          name: req.body.user.name,
+          title: req.body.object_attributes.title
+        }
+      } else {
+        viewData = {
+          action: 'new comment',
+          name: req.body.user.name,
+          title: req.body.issue.title,
+          text: req.body.object_attributes.description,
+          number: req.body.issue.iid
+        } 
       }
+      io.emit('message', viewData)
+      res.sendStatus(200);
     } else {
-      viewData = {
-        action: 'new comment',
-        name: req.body.user.name,
-        title: req.body.issue.title,
-        text: req.body.object_attributes.description,
-        number: req.body.issue.iid
-      } 
+      res.sendStatus(404);
     }
-    io.emit('message', viewData)
+    
   }
 
   module.exports = { index, hookPost }
